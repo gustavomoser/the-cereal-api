@@ -1,0 +1,20 @@
+{
+  "name": "the-cereal-offer",
+  "version": "1.0.0",
+  "description": "An API to calculate the price of cereal carts and their discounts",
+  "main": "index.js",
+  "author": "gustavomoser <gustavovbmoser@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsnd --respawn --transpile-only --exit-child src/index.ts",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "fastify": "^4.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}
