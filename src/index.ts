@@ -1,6 +1,11 @@
 import Fastify from 'fastify'
-import { Input } from './model'
-import { computeCartDiscount } from './service'
+import { Input } from 'model'
+import { computeCartDiscount } from 'service'
+import { config } from 'dotenv'
+import { resolve } from 'path'
+
+config({ path: resolve(__dirname, '../.env') })
+const port = Number(process.env.PORT)
 
 const fastify = Fastify({ logger: true })
 
@@ -11,7 +16,7 @@ fastify.post('/discount', (request, response) => {
 
 fastify.listen(
   {
-    port: 8080,
+    port: port || 8080,
     listenTextResolver: (addr) => `Server running and listening on ${addr}`,
   },
   (error, _) => {

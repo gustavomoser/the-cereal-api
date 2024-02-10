@@ -6,7 +6,7 @@ import {
   Output,
   discountRelation,
   nonQualifiedCollections,
-} from '../model'
+} from 'model'
 
 export const computeCartDiscount = (input: Input): Output => {
   const items = input.cart.lineItems
