@@ -22,6 +22,7 @@ const app = buildFastify({ logger: true })
 
 app.listen(
   {
+    host: '0.0.0.0',
     port: port || 8080,
     listenTextResolver: (addr) => `Server running and listening on ${addr}`,
   },
