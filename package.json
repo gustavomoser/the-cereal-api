@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "start": "ts-node src/server.ts",
     "start:dev": "tsnd --respawn --transpile-only --exit-child src/server.ts",
     "test": "jest",
     "test:dev": "jest --watch",
@@ -17,6 +18,7 @@
     "fastify": "^4.26.0"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.1",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.16",
     "jest": "^29.7.0",
