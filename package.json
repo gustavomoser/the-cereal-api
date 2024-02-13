@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.build.json",
     "start": "ts-node src/server.ts",
     "start:dev": "tsnd --respawn --transpile-only --exit-child src/server.ts",
-    "test": "jest",
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
     "test:dev": "jest --watch",
     "deploy": "flyclt deploy --remote-only"
   },
