@@ -10,4 +10,4 @@ For automating tests, Jest was used to unit test, and for integration test Fasti
 
 The application has only the POST endpoint `/discount`, responsible to do the logic to calculate the discount.
 
-The server url to make requests is avaliable [here](https://cereal-api-polished-dew-4102.fly.dev/).
+The server url to make requests is avaliable [here](https://cereal-api-polished-dew-4102.fly.dev/discount).
