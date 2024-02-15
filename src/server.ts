@@ -8,6 +8,8 @@ import { computeCartDiscount } from './service'
 export const buildFastify = (opts: FastifyHttpOptions<Server, FastifyBaseLogger> = {}): FastifyInstance => {
   const fastify = Fastify(opts)
 
+  // CON: I'm not too familar with Fastify, but I think you could probably define the routes in a different file
+  // because this can easily grow to a lot of routes and it would be better to separate them.
   fastify.post('/discount', (request, response) => {
     const output = computeCartDiscount(request.body as Input)
     response.send(output)
@@ -19,6 +21,9 @@ export const buildFastify = (opts: FastifyHttpOptions<Server, FastifyBaseLogger>
 config({ path: resolve(__dirname, '../.env') })
 const port = Number(process.env.PORT)
 const app = buildFastify({ logger: true })
+
+// Question: Fastify official docs recommends using async/await for starting the server. Any
+// specific reason you are using callback style?
 
 app.listen(
   {
