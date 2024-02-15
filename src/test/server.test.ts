@@ -7,6 +7,7 @@ let fastifyApp: FastifyInstance
 beforeAll(() => (fastifyApp = buildFastify()))
 afterAll(() => fastifyApp?.close())
 
+// PRO: Nice integration test.
 describe('cereal api integration test', () => {
   it('should return the individual discount for each item elegible and the cart total sum', async () => {
     const outputCart: Output = {

@@ -2,6 +2,8 @@ import { CartItem, discountRelation } from '../model'
 import { bananaCake, cocoa, fruity, getAppliedDiscount, inputCart, peanutButter } from './data'
 import { computeCartDiscount, getDiscount } from '../service'
 
+// PRO: Testing the service.
+// CON: Lacking more test cases with different inputs.
 describe('cereal api unit tests', () => {
   describe('computeChartDiscount function unit test', () => {
     it('should return the output correctly', () => {
