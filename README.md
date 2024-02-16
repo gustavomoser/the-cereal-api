@@ -10,4 +10,62 @@ For automating tests, Jest was used to unit test, and for integration test Fasti
 
 The application has only the POST endpoint `/discount`, responsible to do the logic to calculate the discount.
 
-The server url to make requests is avaliable [here](https://cereal-api-polished-dew-4102.fly.dev/discount).
+The server url to make requests is avaliable [here](https://cereal-api-polished-dew-4102.fly.dev/discount) and the JSON body example can be found at the challenge description.
+
+# Install and run
+
+## Install dependencies
+
+To install project dependencies use:
+
+```
+yarn install
+```
+
+## Run project
+
+### Using node
+
+To run the application locally using node, use:
+
+```
+yarn start
+```
+
+and to run it on developing mode, use:
+
+```
+yarn start:dev
+```
+
+### Using Dockerfile
+
+TODO
+
+## Run tests
+
+To run application tests, use:
+
+```
+yarn test
+```
+
+and to run it attaching a watcher:
+
+```
+yarn start:dev
+```
+
+## Build and deploy
+
+To build the application, use:
+
+```
+yarn build
+```
+
+and to deploy the API on Fly.io, use:
+
+```
+yarn deploy
+```
