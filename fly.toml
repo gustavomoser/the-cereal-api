@@ -7,11 +7,8 @@ app = 'cereal-api-polished-dew-4102'
 primary_region = 'gru'
 
 [build]
-
-
-[env]
-PORT=8080
-
+  PORT=8080
+  
 [http_service]
   internal_port = 8080
   force_https = true

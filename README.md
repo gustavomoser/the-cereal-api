@@ -14,6 +14,15 @@ The server url to make requests is avaliable [here](https://cereal-api-polished-
 
 # Install and run
 
+To run the application, you must need the following resources:
+
+- [git](https://git-scm.com/)
+- [node](https://nodejs.org/en/)
+- [yarn](https://classic.yarnpkg.com/en/)
+- [docker (optional)](https://docs.docker.com/)
+
+The commands below should be executed on the project's root folder.
+
 ## Install dependencies
 
 To install project dependencies use:
@@ -32,7 +41,7 @@ To run the application locally using node, use:
 yarn start
 ```
 
-and to run it on developing mode, use:
+and to run it in developing mode (using `ts-node-dev`), use:
 
 ```
 yarn start:dev
@@ -40,7 +49,19 @@ yarn start:dev
 
 ### Using Dockerfile
 
-TODO
+First, you need to build a Docker image from project's Dockerfile. You can do this running the following command:
+
+```
+docker build -t <image-name> .
+```
+
+When build is finished, you can use:
+
+```
+docker run -d -p <your-port>:<environment-port> --name the-cereal-api <image-name>
+```
+
+where `<environment-port>` is the application port denfined in your `.env` file, and `<your-port>` is the local port that is mapped to the Docker application port.
 
 ## Run tests
 
@@ -54,18 +75,4 @@ and to run it attaching a watcher:
 
 ```
 yarn start:dev
-```
-
-## Build and deploy
-
-To build the application, use:
-
-```
-yarn build
-```
-
-and to deploy the API on Fly.io, use:
-
-```
-yarn deploy
 ```
