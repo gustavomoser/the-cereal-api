@@ -12,6 +12,7 @@ describe('cereal api unit tests', () => {
       expect(output.lineItems[0]).toEqual(fruity)
       expect(output.total).toEqual(fruity.price)
     })
+
     it('should return the output correctly even though an item has a negative price', () => {
       const vanilla: CartItem = { collection: 'COLLECTION_1', name: 'Vanilla', price: '35.00' }
       const chocolate: CartItem = { collection: 'COLLECTION_2', name: 'Chocolate', price: '-35.00' }
@@ -25,6 +26,7 @@ describe('cereal api unit tests', () => {
       expect(updatedChocolate.price).toEqual(getAppliedDiscount(chocolate.price, discountRelation[2]))
       expect(output.total).toEqual('66.50')
     })
+
     it('should return the output with 3 product discount applied', () => {
       const output = computeCartDiscount(inputCart)
 
@@ -41,7 +43,29 @@ describe('cereal api unit tests', () => {
 
       expect(output.total).toEqual('130.38')
     })
+
+    it('should not apply discount on items of KETO collection', () => {
+      const keto1: CartItem = { collection: 'KETO', name: 'Fruity Loops', price: '35.00' }
+      const keto2: CartItem = { collection: 'KETO', name: 'Choco Loops', price: '35.00' }
+      const keto3: CartItem = { collection: 'KETO', name: 'Vanilla Loops', price: '35.00' }
+
+      const output = computeCartDiscount({ cart: { reference: '1', lineItems: [keto1, keto2, keto3] } })
+
+      const updatedKeto1 = output.lineItems.find((item: CartItem) => item.name === keto1.name) as CartItem
+      const updatedKeto2 = output.lineItems.find((item: CartItem) => item.name === keto2.name) as CartItem
+      const updatedKeto3 = output.lineItems.find((item: CartItem) => item.name === keto3.name) as CartItem
+
+      expect(output.lineItems.length).toEqual(3)
+      expect(updatedKeto1.price).toEqual(keto1.price)
+      expect(updatedKeto2.price).toEqual(keto2.price)
+      expect(updatedKeto3.price).toEqual(keto3.price)
+
+      expect(parseFloat(output.total)).toEqual(
+        parseFloat(keto1.price) + parseFloat(keto2.price) + parseFloat(keto3.price)
+      )
+    })
   })
+
   describe('getDiscount function unit test', () => {
     it('should return the discount for the amount of cereal boxes', () => {
       const discount = getDiscount([peanutButter, bananaCake, cocoa, fruity])
