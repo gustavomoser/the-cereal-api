@@ -1,8 +1,8 @@
 import { config } from 'dotenv'
 import Fastify, { FastifyBaseLogger, FastifyHttpOptions, FastifyInstance } from 'fastify'
 import { Server } from 'http'
-import { Input } from './model'
 import { resolve } from 'path'
+import { Input } from './model'
 import { computeCartDiscount } from './service'
 
 export const buildFastify = (opts: FastifyHttpOptions<Server, FastifyBaseLogger> = {}): FastifyInstance => {
@@ -17,13 +17,13 @@ export const buildFastify = (opts: FastifyHttpOptions<Server, FastifyBaseLogger>
 }
 
 config({ path: resolve(__dirname, '../.env') })
-const port = Number(process.env.PORT)
-const app = buildFastify({ logger: true })
+const port = Number(process.env.PORT) || 8080
+const app = buildFastify()
 
 app.listen(
   {
+    port,
     host: '0.0.0.0',
-    port: port || 8080,
     listenTextResolver: (addr) => `Server running and listening on ${addr}`,
   },
   (error, _) => {

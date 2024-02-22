@@ -1,9 +1,9 @@
 import {
   CartItem,
   Input,
-  UPPER_ELEGIBLE_AMOUNT,
   LOWER_ELEGIBLE_AMOUNT,
   Output,
+  UPPER_ELEGIBLE_AMOUNT,
   discountRelation,
   nonQualifiedCollections,
 } from '../model'
@@ -16,7 +16,7 @@ export const computeCartDiscount = (input: Input): Output => {
   let total = 0
 
   const computedCart: CartItem[] = items.map((item) => {
-    const currentPrice = parseFloat(item.price)
+    const currentPrice = Math.abs(parseFloat(item.price))
     const computedPrice = !nonQualifiedCollections.includes(item.collection) ? currentPrice * discount : currentPrice
     total += computedPrice
 
