@@ -1,4 +1,4 @@
-import { CartItem, Input, Output, nonQualifiedCollections } from 'model'
+import { CartItem, Input } from 'model'
 
 export const peanutButter: CartItem = {
   name: 'Peanut Butter',
@@ -17,4 +17,4 @@ export const inputCart: Input = {
 }
 
 export const getAppliedDiscount = (price: string, discount: number): string =>
-  (parseFloat(price) * (1 - discount)).toFixed(2)
+  (Math.abs(parseFloat(price)) * (1 - discount)).toFixed(2)
